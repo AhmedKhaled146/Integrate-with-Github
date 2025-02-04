@@ -1,0 +1,10 @@
+<h1>Repositories#show</h1>
+<p>Find me in app/views/repositories/show.html.erb</p>
+
+<h1><%= @repository.name %></h1>
+<p><%= @repository.description %></p>
+<p>Stars: <%= @repository.stargazers_count %></p>
+<p>Language: <%= @repository.language %></p>
+<p>Last updated: <%= @repository.updated_at %></p>
+
+<%= link_to 'Back to Repositories', repositories_path %>
