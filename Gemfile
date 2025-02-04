@@ -20,7 +20,7 @@ gem "jbuilder"
 # gem "redis", ">= 4.0.1"
 
 ###### Added gem #####
-gem 'devise'
+gem 'devise', '~> 4.9', '>= 4.9.4'
 gem 'dotenv-rails'
 ######################
 
