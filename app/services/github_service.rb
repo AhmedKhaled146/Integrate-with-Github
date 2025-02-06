@@ -4,19 +4,6 @@ class GithubService
   end
 
   def self.fetch_repositories(user)
-    # query = <<~GRAPHQL
-    #   query {
-    #     viewer {
-    #       repositories() {
-    #         nodes {
-    #           name
-    #           description
-    #           stargazerCount
-    #         }
-    #       }
-    #     }
-    #   }
-    # GRAPHQL
 
     client = github_client
     user = client.user

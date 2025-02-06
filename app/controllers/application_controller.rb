@@ -22,4 +22,9 @@ class ApplicationController < ActionController::Base
     flash[:alert] = "Client Not FOund."
     redirect_to root_path
   end
+
+  def handle_error(error)
+    flash[:alert] = error.message
+    redirect_to repositories_path
+  end
 end
