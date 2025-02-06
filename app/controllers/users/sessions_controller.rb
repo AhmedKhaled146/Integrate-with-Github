@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
+
+  def create
+    super do |resource|
+      redirect_to repositories_path, notice: "Signed in successfully." and return
+    end
+  end
   def destroy
     signed_out = sign_out(resource_name)
     yield if block_given?

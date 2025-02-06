@@ -1,18 +1,28 @@
-<h1>Repositories#index</h1>
-<p>Find me in app/views/repositories/index.html.erb</p>
-
-<h1>My Repositories</h1>
+<h1 class="text-center mb-4">My Repositories</h1>
 
 <% if @repositories.any? %>
-  <ul>
-    <% @repositories.each do |repo| %>
-      <li>
-        <%= link_to repo.name, repository_path(repo.full_name) %>
-        <p><%= repo.description %></p>
-        <p>Stars: <%= repo.stargazers_count %></p>
-      </li>
-    <% end %>
-  </ul>
+  <div class="container">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <% @repositories.each do |repo| %>
+        <div class="col">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">
+                <%= link_to repo.name, repository_path(repo.full_name), class: "text-decoration-none text-primary" %>
+              </h5>
+              <p class="card-text"><%= repo[:description] %></p>
+              <p class="card-text">
+                <strong>Stars:</strong> <%= repo[:stargazerCount] %>
+              </p>
+              <%= link_to 'View Details', repository_path(repo.full_name), class: 'btn btn-outline-primary btn-sm' %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 <% else %>
-  <p>No repositories found.</p>
+  <div class="alert alert-warning text-center" role="alert">
+    No repositories found.
+  </div>
 <% end %>
