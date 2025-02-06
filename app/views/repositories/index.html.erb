@@ -8,11 +8,11 @@
           <div class="card shadow-sm">
             <div class="card-body">
               <h5 class="card-title">
-                <%= link_to repo.name, repository_path(repo.full_name), class: "text-decoration-none text-primary" %>
+                <%= link_to repo[:name], repository_path(repo[:full_name]), class: "text-decoration-none text-primary" %>
               </h5>
               <p class="card-text"><%= repo[:description] %></p>
               <p class="card-text">
-                <strong>Stars:</strong> <%= repo[:stargazerCount] %>
+                <strong>Stars:</strong> <%= repo[:stargazerCount].to_i %>
               </p>
               <%= link_to 'View Details', repository_path(repo.full_name), class: 'btn btn-outline-primary btn-sm' %>
             </div>

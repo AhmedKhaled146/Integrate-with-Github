@@ -11,7 +11,7 @@ class RepositoriesController < ApplicationController
   end
 
   def show
-    @repository = GithubService.fetch_repository_details(params[:name])
+    @repository = GithubService.fetch_repository_details(params[:id])
   end
 
 end

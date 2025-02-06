@@ -1,24 +1,36 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Please Follow this instruction for How this Application Run Locally ...
 
-Things you may want to cover:
 
-* Ruby version
+```gitexclude
+git clone https://github.com/AhmedKhaled146/Integrate-with-Github.git
+```
+then: 
 
-* System dependencies
+```gitexclude
+cd Integrate with Github
+```
 
-* Configuration
+You should install the dependencies:
+```gitexclude
+bundle install
+```
 
-* Database creation
+and Setup the database:
 
-* Database initialization
+```gitexclude
+rails db:create
+rails db:migrate
+```
 
-* How to run the test suite
+you should add your Github_access_token in the .ENV file
 
-* Services (job queues, cache servers, search engines, etc.)
+```gitexclude
+GITHUB_ACCESS_TOKEN= xxxx_Your_token_XXXX
+```
 
-* Deployment instructions
-
-* ...
+then you should Run the server
+```gitexclude
+rails s
+```

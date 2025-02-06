@@ -4,19 +4,19 @@ class GithubService
   end
 
   def self.fetch_repositories(user)
-    query = <<~GRAPHQL
-      query {
-        viewer {
-          repositories(first: 10) {
-            nodes {
-              name
-              description
-              stargazerCount
-            }
-          }
-        }
-      }
-    GRAPHQL
+    # query = <<~GRAPHQL
+    #   query {
+    #     viewer {
+    #       repositories() {
+    #         nodes {
+    #           name
+    #           description
+    #           stargazerCount
+    #         }
+    #       }
+    #     }
+    #   }
+    # GRAPHQL
 
     client = github_client
     user = client.user
@@ -29,23 +29,29 @@ class GithubService
     # end
   end
 
-  def self.fetch_repository_details(repo_name)
+  # def self.fetch_repository_details(repo_name)
+  #   client = github_client
+  #   user = client.user
+  #
+  #   query = <<~GRAPHQL
+  #     query {
+  #       repository(name: "#{repo_name}", owner: "#{user.login}") {
+  #         name
+  #         description
+  #         stargazerCount
+  #       }
+  #     }
+  #   GRAPHQL
+  # end
+  def self.fetch_repository_details(repo_full_name)
     client = github_client
-    user = client.user
+    repo = client.repo(repo_full_name)
+    repo_details = repo.rels[:self].get.data
 
-    query = <<~GRAPHQL
-      query {
-        repository(name: "#{repo_name}", owner: "#{user.login}") {
-          name
-          description
-          stargazerCount
-        }
-      }
-    GRAPHQL
-
-
-    repository = client.graphql(query)
-
-    repository
+    {
+      name: repo_details.name,
+      description: repo_details.description,
+      stargazer_count: repo_details.stargazer_count
+    }
   end
 end
