@@ -9,7 +9,7 @@ git clone https://github.com/AhmedKhaled146/Integrate-with-Github.git
 then: 
 
 ```gitexclude
-cd Integrate with Github
+cd integrate_with_github
 ```
 
 You should install the dependencies:

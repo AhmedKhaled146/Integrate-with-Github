@@ -4,19 +4,6 @@ class GithubService
   end
 
   def self.fetch_repositories(user)
-    # query = <<~GRAPHQL
-    #   query {
-    #     viewer {
-    #       repositories() {
-    #         nodes {
-    #           name
-    #           description
-    #           stargazerCount
-    #         }
-    #       }
-    #     }
-    #   }
-    # GRAPHQL
 
     client = github_client
     user = client.user
@@ -24,25 +11,8 @@ class GithubService
 
     repos
 
-    # repos.each do |repo|
-    #   puts repo.name
-    # end
   end
 
-  # def self.fetch_repository_details(repo_name)
-  #   client = github_client
-  #   user = client.user
-  #
-  #   query = <<~GRAPHQL
-  #     query {
-  #       repository(name: "#{repo_name}", owner: "#{user.login}") {
-  #         name
-  #         description
-  #         stargazerCount
-  #       }
-  #     }
-  #   GRAPHQL
-  # end
   def self.fetch_repository_details(repo_full_name)
     client = github_client
     repo = client.repo(repo_full_name)
